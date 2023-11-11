@@ -1,0 +1,19 @@
+# Shamelessly stolen from https://github.com/ra3se/q3ra3-server/tree/master
+version: '3.8'
+
+services:
+  quake3e:
+    build:
+      context: .
+    restart: unless-stopped
+    environment:
+      MAP: 3level2-wfa
+    ports:
+      - "0.0.0.0:27960:27960/udp"
+    volumes:
+      - "${PWD}/pak0.pk3:/quake3/baseq3/pak0.pk3"
+      #- "./wfa/wfa-server.cfg:/quake3/wfa/wfa-server.cfg"
+      #- "./wfa/servercfg.cfg:/quake3/wfa/servercfg.cfg"
+      - "./wfa/:/quake3/wfa/"
+    hostname: wfa.injate.com
+
